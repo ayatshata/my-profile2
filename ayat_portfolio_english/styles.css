@@ -8,12 +8,19 @@
     --radius: 12px;
 }
 
+[data-theme="dark"] {
+    --bg: #121212;
+    --text: #f0f0f0;
+    --muted: #b0b0b0;
+    --card: #1e1e1e;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
-    transition: 0.3s;
+    transition: background 0.3s, color 0.3s;
 }
 
 header {
@@ -67,7 +74,7 @@ nav button {
 
 .btn.primary {
     background: var(--accent);
-    color: white;
+    color: #fff;
 }
 
 .btn.github {
@@ -94,14 +101,12 @@ nav button {
 }
 
 @keyframes pulse {
-    0% {
+    0%,
+    100% {
         transform: scale(1);
     }
     50% {
         transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
     }
 }
 
@@ -109,8 +114,8 @@ nav button {
 /* Profile Image */
 
 .profile-img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 12px;
     overflow: hidden;
     margin: 0 auto 15px auto;
@@ -129,20 +134,26 @@ nav button {
     transform: scale(1.05);
 }
 
+
+/* Cards */
+
 .card,
 .skill-card,
 .project {
     padding: 20px;
     background: var(--card);
     border-radius: var(--radius);
-    transition: 0.3s;
     border: 1px solid var(--accent-dark);
+    transition: 0.3s;
 }
 
 .project:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
 }
+
+
+/* Chips */
 
 .chip {
     display: inline-block;
@@ -153,6 +164,9 @@ nav button {
     margin: 3px;
 }
 
+
+/* Grid */
+
 .grid,
 .grid-skills {
     display: grid;
@@ -160,6 +174,9 @@ nav button {
     gap: 15px;
     margin-top: 20px;
 }
+
+
+/* Contact */
 
 .contact-box {
     padding: 20px;
@@ -192,12 +209,18 @@ nav button {
     margin-top: 10px;
 }
 
+
+/* Dark Mode Toggle */
+
 #themeToggle {
     padding: 6px 10px;
     border-radius: 8px;
     border: 1px solid var(--accent);
     cursor: pointer;
 }
+
+
+/* Back To Top */
 
 #backToTop {
     position: fixed;
@@ -214,6 +237,9 @@ nav button {
 #backToTop.show {
     display: block;
 }
+
+
+/* Loader */
 
 #loader {
     position: fixed;
@@ -239,6 +265,9 @@ nav button {
         transform: rotate(360deg);
     }
 }
+
+
+/* Scroll Animation */
 
 [data-animate] {
     opacity: 0;
