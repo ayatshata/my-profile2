@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Typing effect
+    // Typing Effect
     const typingEl = document.getElementById('typing');
     const words = ["Full Stack .NET Developer", "UI Enthusiast"];
     let w = 0,
@@ -38,24 +38,40 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll);
     onScroll();
 
-    // Back to top
+    // Back To Top
     const back = document.getElementById('backToTop');
     window.addEventListener('scroll', () => { window.scrollY > 400 ? back.classList.add('show') : back.classList.remove('show'); });
     back.addEventListener('click', () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
     // Dark Mode
-    document.getElementById('themeToggle').addEventListener('click', () => {
-        document.documentElement.getAttribute('data-theme') === 'dark' ? document.documentElement.removeAttribute('data-theme') : document.documentElement.setAttribute('data-theme', 'dark');
+    const themeBtn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    if (localStorage.getItem('theme') === 'dark') {
+        root.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = '🌙';
+        themeBtn.textContent = '';
+    }
+    themeBtn.addEventListener('click', () => {
+        if (root.getAttribute('data-theme') === 'dark') {
+            root.removeAttribute('data-theme');
+            themeBtn.textContent = '☀️';
+            localStorage.setItem('theme', 'light');
+        } else {
+            root.setAttribute('data-theme', 'dark');
+            themeBtn.textContent = '🌙';
+
+            localStorage.setItem('theme', 'dark');
+        }
     });
 
-    // Contact
+    // Contact Message
     document.getElementById('sendBtn').addEventListener('click', () => {
         document.getElementById('sentMsg').style.display = 'block';
         document.getElementById('contactForm').reset();
         setTimeout(() => document.getElementById('sentMsg').style.display = 'none', 4000);
     });
 
-    // Year
+    // Current Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Loader
